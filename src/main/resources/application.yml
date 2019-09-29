@@ -1,0 +1,37 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/home13?useUnicode=true&characterEncoding=utf8&SSL=false
+    username: root
+    password: 123456
+
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+
+  mail:
+    host: smtp.qq.com
+    username: yangfan0053@qq.com
+    password: ewxlmkuvvxzgbdch
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+mybatis:
+  type-aliases-package: com.yangfan.domain
+  mapper-locations: classpath:mapper/*Mapper.xml
+server:
+  port: 8082
+
+
+

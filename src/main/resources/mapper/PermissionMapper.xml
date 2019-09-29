@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.PermissionMapper">
+  <resultMap id="BaseResultMap" type="com.yangfan.domain.Permission">
+    <id column="permission_id" jdbcType="INTEGER" property="permissionId" />
+    <result column="per_name" jdbcType="VARCHAR" property="perName" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_type" jdbcType="VARCHAR" property="menuType" />
+    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="parent_code" jdbcType="VARCHAR" property="parentCode" />
+    <result column="per_desc" jdbcType="VARCHAR" property="perDesc" />
+    <result column="if_vilid" jdbcType="TINYINT" property="ifVilid" />
+  </resultMap>
+  <!--
+  List<Permission> selectPermissionByUsername(@Param("loginName") String loginName);
+  -->
+  <select id="selectPermissionByUsername" resultMap="BaseResultMap">
+    SELECT p.* FROM
+    tb_sys_user u,
+    tb_user_role ur,
+    tb_sys_role r,
+    tb_role_permission rp,
+    tb_sys_permission p
+    WHERE u.userid=ur.user_id and ur.role_id=r.role_id
+    and r.role_id=rp.role_id and rp.permission_id=p.permission_id
+    and u.login_name=#{loginName}
+  </select>
+</mapper>

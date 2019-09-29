@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangfan.dao.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.qf.domain.UserRole">
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="role_id" jdbcType="TINYINT" property="roleId" />
+  </resultMap>
+
+
+    <!--
+    int addUserRole(int userId,int roleId);
+    -->
+    <insert id="addUserRole" parameterType="int">
+        insert into tb_user_role(user_id,role_id) value(#{userId},#{roleId})
+    </insert>
+</mapper>
